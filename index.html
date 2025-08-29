@@ -10,8 +10,25 @@
 <body>
   <div class="page">
     <header class="site-header">
-      <img src="ASSETS/avatar_hi.jpg" alt="Site avatar" class="logo" />
+      <!-- Non-interactive logo block -->
+      <span class="logo-wrap" aria-hidden="true">
+        <img
+          src="ASSETS/avatar_hi.jpg"
+          alt=""
+          class="logo-img"
+          draggable="false"
+          role="presentation"
+        />
+      </span>
     </header>
   </div>
+
+  <script>
+    // Disable right-click globally
+    document.addEventListener("contextmenu", e => e.preventDefault());
+    // Disable dragging globally
+    document.addEventListener("dragstart", e => e.preventDefault());
+    document.addEventListener("drop", e => e.preventDefault());
+  </script>
 </body>
 </html>

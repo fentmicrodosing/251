@@ -1,17 +1,22 @@
 :root {
-  --g-232: #232323;
   --g-e3e: #e3e3e3;
-
-  /* logo width setting */
-  --logo-w: 264px;
+  --logo-w: 264px; /* tweak this to resize the logo */
 }
 
 * { box-sizing: border-box; }
 
+html, body {
+  height: 100%;
+}
+
 body {
   margin: 0;
-  background: var(--g-e3e);   /* solid light gray */
+  background: var(--g-e3e);     /* solid light gray */
   text-align: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;            /* prevent text/image selection */
 }
 
 .page {
@@ -24,12 +29,24 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 60px 0;   /* extra breathing room */
+  padding: 60px 0;
   background: var(--g-e3e);
 }
 
-.logo {
+.logo-wrap {
+  display: inline-block;
+  position: relative;
   width: var(--logo-w);
+  line-height: 0;
+}
+
+.logo-img {
+  width: 100%;
   height: auto;
   display: block;
+
+  pointer-events: none;         /* no clicks */
+  -webkit-user-drag: none;
+  user-drag: none;
+  -webkit-touch-callout: none;
 }
