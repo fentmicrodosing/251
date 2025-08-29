@@ -1,22 +1,22 @@
 :root {
   --g-e3e: #e3e3e3;
-  --logo-w: 264px; /* tweak this to resize the logo */
+
+  /* Responsive width: min 160px, prefers ~264px, max 264px (shrinks on small screens) */
+  --logo-w: clamp(160px, 60vw, 264px);
 }
 
 * { box-sizing: border-box; }
 
-html, body {
-  height: 100%;
-}
+html, body { height: 100%; }
 
 body {
   margin: 0;
-  background: var(--g-e3e);     /* solid light gray */
+  background: var(--g-e3e);           /* solid light gray */
   text-align: center;
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
-  user-select: none;            /* prevent text/image selection */
+  user-select: none;                  /* no text/element selection */
 }
 
 .page {
@@ -30,23 +30,42 @@ body {
   justify-content: center;
   align-items: center;
   padding: 60px 0;
-  background: var(--g-e3e);
+  background: var(--g-e3e);           /* flat, no gradients */
+  /* no borders, sharp corners */
 }
 
+/* Wrapper controls size and positioning */
 .logo-wrap {
-  display: inline-block;
   position: relative;
+  display: inline-block;
   width: var(--logo-w);
-  line-height: 0;
+  line-height: 0;                     /* kill inline gaps */
 }
 
+/* The image itself: non-interactive */
 .logo-img {
   width: 100%;
   height: auto;
   display: block;
 
-  pointer-events: none;         /* no clicks */
-  -webkit-user-drag: none;
-  user-drag: none;
-  -webkit-touch-callout: none;
+  pointer-events: none;               /* ignore pointer events */
+  -webkit-user-drag: none;            /* Safari/Chrome drag disable */
+  user-drag: none;                    /* non-standard, some UAs */
+  -webkit-touch-callout: none;        /* iOS callout off */
+}
+
+/* Transparent overlay to swallow clicks/drags entirely */
+.logo-shield {
+  position: absolute;
+  inset: 0;
+  display: block;
+  pointer-events: all;                /* captures interactions */
+  /* no background; fully transparent */
+}
+
+/* Extra mobile safety: keep it comfortable on very small screens */
+@media (max-width: 480px) {
+  :root {
+    --logo-w: clamp(140px, 70vw, 240px);
+  }
 }

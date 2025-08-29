@@ -10,7 +10,7 @@
 <body>
   <div class="page">
     <header class="site-header">
-      <!-- Non-interactive logo block -->
+      <!-- Non-interactive logo block with a shield overlay -->
       <span class="logo-wrap" aria-hidden="true">
         <img
           src="ASSETS/avatar_hi.jpg"
@@ -19,16 +19,23 @@
           draggable="false"
           role="presentation"
         />
+        <span class="logo-shield"></span>
       </span>
     </header>
   </div>
 
   <script>
-    // Disable right-click globally
-    document.addEventListener("contextmenu", e => e.preventDefault());
-    // Disable dragging globally
-    document.addEventListener("dragstart", e => e.preventDefault());
-    document.addEventListener("drop", e => e.preventDefault());
+    // Hard-block common interactions
+    document.addEventListener("contextmenu", e => e.preventDefault(), { capture: true });
+    document.addEventListener("dragstart", e => e.preventDefault(), { capture: true });
+    document.addEventListener("drop", e => e.preventDefault(), { capture: true });
+
+    // Extra guard on the image itself
+    const img = document.querySelector(".logo-img");
+    if (img) {
+      img.addEventListener("mousedown", e => e.preventDefault(), { capture: true });
+      img.addEventListener("touchstart", e => e.preventDefault(), { passive: false, capture: true });
+    }
   </script>
 </body>
 </html>
