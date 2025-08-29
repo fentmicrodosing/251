@@ -1,0 +1,35 @@
+:root {
+  --g-232: #232323;
+  --g-e3e: #e3e3e3;
+
+  /* logo width setting */
+  --logo-w: 264px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: var(--g-e3e);   /* solid light gray */
+  text-align: center;
+}
+
+.page {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.site-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 0;   /* extra breathing room */
+  background: var(--g-e3e);
+}
+
+.logo {
+  width: var(--logo-w);
+  height: auto;
+  display: block;
+}
