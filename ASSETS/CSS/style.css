@@ -1,22 +1,17 @@
 :root {
+  --g-232: #232323;
   --g-e3e: #e3e3e3;
 
-  /* Responsive width: min 160px, prefers ~264px, max 264px (shrinks on small screens) */
-  --logo-w: clamp(160px, 60vw, 264px);
+  /* logo width setting */
+  --logo-w: 264px;
 }
 
 * { box-sizing: border-box; }
 
-html, body { height: 100%; }
-
 body {
   margin: 0;
-  background: var(--g-e3e);           /* solid light gray */
+  background: var(--g-e3e);   /* solid light gray */
   text-align: center;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;                  /* no text/element selection */
 }
 
 .page {
@@ -29,43 +24,12 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 60px 0;
-  background: var(--g-e3e);           /* flat, no gradients */
-  /* no borders, sharp corners */
+  padding: 60px 0;   /* extra breathing room */
+  background: var(--g-e3e);
 }
 
-/* Wrapper controls size and positioning */
-.logo-wrap {
-  position: relative;
-  display: inline-block;
+.logo {
   width: var(--logo-w);
-  line-height: 0;                     /* kill inline gaps */
-}
-
-/* The image itself: non-interactive */
-.logo-img {
-  width: 100%;
   height: auto;
   display: block;
-
-  pointer-events: none;               /* ignore pointer events */
-  -webkit-user-drag: none;            /* Safari/Chrome drag disable */
-  user-drag: none;                    /* non-standard, some UAs */
-  -webkit-touch-callout: none;        /* iOS callout off */
-}
-
-/* Transparent overlay to swallow clicks/drags entirely */
-.logo-shield {
-  position: absolute;
-  inset: 0;
-  display: block;
-  pointer-events: all;                /* captures interactions */
-  /* no background; fully transparent */
-}
-
-/* Extra mobile safety: keep it comfortable on very small screens */
-@media (max-width: 480px) {
-  :root {
-    --logo-w: clamp(140px, 70vw, 240px);
-  }
 }
